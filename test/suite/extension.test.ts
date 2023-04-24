@@ -149,8 +149,9 @@ suite('Extension Test Suite', () => {
   });
 
   test('Extension should activate', async () => {
-    await getExtension()?.activate();
-    assert.ok(true);
+    let succeed;
+    await getExtension()?.activate().then(() => { succeed = true }, () => { succeed = false });
+    assert.ok(succeed);
   });
 
   test('Extension should create the extension log file', async () => {
