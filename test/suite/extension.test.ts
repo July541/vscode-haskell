@@ -150,8 +150,12 @@ suite('Extension Test Suite', () => {
 
   test('Extension should activate', async () => {
     let succeed;
-    const res = await getExtension()?.activate();
-    console.log(`\n\n\n${res}\n\n\n`);
+    const ext = getExtension();
+    if (ext) {
+      const res = ext.activate();
+      console.log(`\n\n\n${res}\n\n\n`);
+    }
+    console.log(`\n\n\n${ext}\n\n\n`);
     assert.ok(succeed);
   });
 
