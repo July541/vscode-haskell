@@ -153,7 +153,10 @@ suite('Extension Test Suite', () => {
     const ext = getExtension();
     if (ext) {
       const res = ext.activate();
-      await res.then(() => { succeed = true; }, (x) => {
+      await res.then((x) => {
+        succeed = true;
+        console.log(`\n\n\nsuccess${x}\n\n\n`)
+      }, (x) => {
         succeed = false;
         console.log("\n\n\nerror\n\n\n");
       })
