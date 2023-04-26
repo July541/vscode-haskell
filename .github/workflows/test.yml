@@ -12,7 +12,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [macos-11, ubuntu-latest, windows-latest]
-        ghc: [9.0.2, 8.10.4]
+        ghc: [9.4.4, 8.10.4]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
@@ -44,7 +44,6 @@ jobs:
       # Pre-fetch HLS binaries before the tests because otherwise
       # we run into timeouts. Downloading takes longer, since we download
       # per HLS version one HLS binary per GHC version.
-      - run: echo $XDG_BIN_HOME
       - run: |
           mkdir -p test-workspace/bin/
           export GHCUP_INSTALL_BASE_PREFIX=$(pwd)/test-workspace/bin
