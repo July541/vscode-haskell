@@ -26,10 +26,10 @@ jobs:
         run: ghcup upgrade -i -f
         shell: bash
       # Setup the environment for the tests
-      - name: Install stack
-        run: ghcup install stack recommended
+      # - name: Install stack
+        # run: ghcup install stack recommended
       - name: Install cabal
-        run: ghcup install cabal recommended
+        run: ghcup install cabal latest
       - name: Install GHC
         run: ghcup install ghc ${{matrix.ghc}}
       - name: 'Install `tree` for MacOs'
