@@ -150,7 +150,7 @@ suite('Extension Test Suite', () => {
 
   test('Extension should activate', async () => {
     await getExtension()?.activate();
-    await delay(60);
+    await delay(300);
     assert.ok(true);
   });
 
