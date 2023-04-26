@@ -150,7 +150,6 @@ suite('Extension Test Suite', () => {
 
   test('Extension should activate', async () => {
     await getExtension()?.activate();
-    await delay(30);
     assert.ok(true);
   });
 
@@ -161,7 +160,7 @@ suite('Extension Test Suite', () => {
 
   test('Extension log should have server output', async () => {
     await vscode.workspace.openTextDocument(getWorkspaceFile('Main.hs'));
-    await delay(90);
+    await delay(60);
     const logContents = getExtensionLogContent();
     assert.ok(logContents, 'Extension log file does not exist');
     assert.ok(
