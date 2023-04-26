@@ -144,15 +144,13 @@ suite('Extension Test Suite', () => {
     filesCreated.set('cache', existsWorkspaceFile('cache-test'));
   });
 
-  test('Extension should be present', async () => {
-    await getExtension()?.activate();
-    const ext = getExtension()!;
-    console.log(`\n\n\n${ext.isActive}`);
+  test('Extension should be present', () => {
     assert.ok(getExtension());
   });
 
   test('Extension should activate', async () => {
     await getExtension()?.activate();
+    await delay(60);
     assert.ok(true);
   });
 
@@ -191,7 +189,6 @@ suite('Extension Test Suite', () => {
     console.log('Disposing all resources');
     disposables.forEach((d) => d.dispose());
     console.log('Stopping the lsp server');
-    await delay(30);
     await vscode.commands.executeCommand(StopServerCommandName);
     await delay(5);
     console.log('Contents of the extension log:');
