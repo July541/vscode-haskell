@@ -47,7 +47,9 @@ jobs:
       - run: |
           mkdir -p test-workspace/bin/
           export GHCUP_INSTALL_BASE_PREFIX=$(pwd)/test-workspace/bin
+          echo $XDG_BIN_HOME
           echo $XDG_BIN_HOME $GHCUP_INSTALL_BASE_PREFIX
+          echo $XDG_BIN_HOME
           ghcup config set cache true
           ghcup --no-verbose prefetch hls 1.4.0
           ghcup --no-verbose prefetch hls latest
