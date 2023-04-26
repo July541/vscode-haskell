@@ -191,7 +191,8 @@ suite('Extension Test Suite', () => {
     console.log('Disposing all resources');
     disposables.forEach((d) => d.dispose());
     console.log('Stopping the lsp server');
-    await vscode.commands.executeCommand(StopServerCommandName);
+    const r = await vscode.commands.executeCommand(StopServerCommandName);
+    console.log(`r\n\n\n${r}\n`);
     await delay(5);
     console.log('Contents of the extension log:');
     const logContent = getExtensionLogContent();
