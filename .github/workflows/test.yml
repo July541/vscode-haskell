@@ -54,7 +54,7 @@ jobs:
         shell: bash
 
       # Install test dependencies
-      - run: yarn install --immutable --immutable-cache --check-cache
+      - run: yarn install
       - run: yarn run webpack
 
       # Run the tests
