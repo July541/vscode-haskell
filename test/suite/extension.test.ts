@@ -23,7 +23,7 @@ const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
 const retryOperation = (operation: () => Promise<any>, delay: number, retries: number) =>
   new Promise((resolve, reject): Promise<any> => {
     return operation()
-      .then(resolve)
+      .then((x) => x())
       .catch((reason) => {
         if (retries > 0) {
           return wait(delay)
