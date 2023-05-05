@@ -167,7 +167,7 @@ suite('Extension Test Suite', () => {
       retryOperation(
         () =>
           new Promise((resolve, reject) =>
-            logContents.match(/INFO hls:\s+Registering ide configuration/) !== null ? resolve : reject
+            logContents.match(/INFO hls:\s+Registering ide configuration/) !== null ? resolve : reject()
           ),
         1000 * 5,
         20
