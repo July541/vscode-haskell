@@ -166,8 +166,13 @@ suite('Extension Test Suite', () => {
     assert.ok(
       retryOperation(
         () =>
-          new Promise((resolve, reject) =>
-            logContents.match(/INFO hls:\s+Registering ide configuration/) !== null ? resolve : reject("failed")
+          new Promise((resolve, reject) => {
+            if (logContents.match(/INFO hls:\s+Registering ide configuration/) !== null) {
+              // resolve();
+            } else {
+              reject();
+            }
+          }
           ),
         1000 * 5,
         20
