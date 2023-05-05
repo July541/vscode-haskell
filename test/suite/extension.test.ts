@@ -164,15 +164,10 @@ suite('Extension Test Suite', () => {
     const logContents = getExtensionLogContent();
     assert.ok(logContents, 'Extension log file does not exist');
     assert.ok(
-      retryOperation(
+      await retryOperation(
         () =>
-          new Promise((resolve, reject) => {
-            if (logContents.match(/INFO hls:\s+Registering ide configuration/) !== null) {
-              // resolve();
-            } else {
-              reject();
-            }
-          }
+          new Promise((resolve, reject) =>
+            logContents.match(/INFO hls:\s+Registering ide configuration/) !== null ? resolve : reject
           ),
         1000 * 5,
         20
@@ -184,7 +179,7 @@ suite('Extension Test Suite', () => {
   test('Server should inherit environment variables defined in the settings', async () => {
     await vscode.workspace.openTextDocument(getWorkspaceFile('Main.hs'));
     assert.ok(
-      retryOperation(() => new Promise((resolve, reject) => filesCreated.get('cache')!), 1000 * 5, 20),
+      await retryOperation(() => new Promise((resolve, reject) => filesCreated.get('cache')!), 1000 * 5, 20),
       'Server did not inherit XDG_CACHE_DIR from environment variables set in the settings'
     );
   });
